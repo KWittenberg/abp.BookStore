@@ -26,6 +26,7 @@ public class BookStoreMenuContributor : IMenuContributor
         var l = context.GetLocalizer<BookStoreResource>();
 
         context.Menu.Items.Insert(0, new ApplicationMenuItem(BookStoreMenus.Home, l["Menu:Home"], "~/", icon: "fas fa-home", order: 0));
+        context.Menu.Items.Insert(0, new ApplicationMenuItem("BooksStore.Todo", l["Menu:Todo"], url: "/Todo", icon: "fa fa-th-list", order: 1));
 
         if (MultiTenancyConsts.IsEnabled)
         {

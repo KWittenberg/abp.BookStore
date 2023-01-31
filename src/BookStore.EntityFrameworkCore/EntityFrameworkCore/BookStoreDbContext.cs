@@ -1,4 +1,5 @@
 ﻿using BookStore.Books;
+using BookStore.Todo;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -26,6 +27,9 @@ public class BookStoreDbContext : AbpDbContext<BookStoreDbContext>, IIdentityDbC
 
     // Add Books
     public DbSet<Book> Books { get; set; }
+
+    // Add Todo
+    public DbSet<TodoItem> TodoItems { get; set; }
 
 
     #region Entities from the modules
@@ -76,6 +80,8 @@ public class BookStoreDbContext : AbpDbContext<BookStoreDbContext>, IIdentityDbC
 
         /* Configure your own tables/entities inside here */
 
+        
+        // Add Book
         builder.Entity<Book>(b =>
         {
             b.ToTable(BookStoreConsts.DbTablePrefix + "Books", BookStoreConsts.DbSchema);
@@ -85,6 +91,8 @@ public class BookStoreDbContext : AbpDbContext<BookStoreDbContext>, IIdentityDbC
             //b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
         });
 
+        // Add TodoItem
+        builder.Entity<TodoItem>(b => {b.ToTable("TodoItems");});
 
 
         //builder.Entity<YourEntity>(b =>

@@ -1,0 +1,39 @@
+﻿@page
+@model BookStore.Web.Pages.Todo.IndexModel
+@section styles {
+    <abp-style src="/Pages/Todo/Index.css" />
+}
+@section scripts {
+    <abp-script src="/Pages/Todo/Index.js" />
+}
+<div class="container">
+    <abp-card>
+        <abp-card-header>
+            <abp-card-title>
+                Todo List
+            </abp-card-title>
+        </abp-card-header>
+        <abp-card-body>            
+            
+            <!-- FORM FOR NEW TODO ITEMS -->
+            <form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <input id="NewItemText" type="text" class="form-control" placeholder="unesi...">
+                    </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Dodaj</button>
+                </div>
+            </form>
+            
+            <!-- TODO ITEMS LIST -->
+            <ul id="TodoList">
+                @foreach (var todoItem in Model.TodoItems)
+                {
+                    <li data-id="@todoItem.Id"><i class="fa fa-trash-o"></i> @todoItem.Text</li>
+                }
+            </ul>
+        </abp-card-body>
+    </abp-card>
+</div>
