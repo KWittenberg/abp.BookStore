@@ -23,9 +23,6 @@ public class BookStoreApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<BookStoreApplicationModule>();
-        });
+        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<BookStoreApplicationModule>(); });
     }
 }

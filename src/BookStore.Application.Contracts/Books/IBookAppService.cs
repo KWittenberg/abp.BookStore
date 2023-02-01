@@ -14,5 +14,5 @@ public interface IBookAppService : ICrudAppService< //Defines CRUD methods
         PagedAndSortedResultRequestDto, //Used for paging/sorting
         CreateUpdateBookDto> //Used to create/update a book
 {
-    //Task<ListResultDto<AuthorLookupDto>> GetAuthorLookupAsync();
+    Task<ListResultDto<AuthorLookupDto>> GetAuthorLookupAsync();
 }

@@ -1,4 +1,5 @@
-﻿using BookStore.Books;
+﻿using BookStore.Authors;
+using BookStore.Books;
 using BookStore.Todo;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -27,6 +28,8 @@ public class BookStoreDbContext : AbpDbContext<BookStoreDbContext>, IIdentityDbC
 
     // Add Books
     public DbSet<Book> Books { get; set; }
+    // Add Authors
+    public DbSet<Author> Authors { get; set; }
 
     // Add Todo
     public DbSet<TodoItem> TodoItems { get; set; }
@@ -79,16 +82,22 @@ public class BookStoreDbContext : AbpDbContext<BookStoreDbContext>, IIdentityDbC
         builder.ConfigureTenantManagement();
 
         /* Configure your own tables/entities inside here */
-
-        
+                
         // Add Book
         builder.Entity<Book>(b =>
         {
             b.ToTable(BookStoreConsts.DbTablePrefix + "Books", BookStoreConsts.DbSchema);
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Name).IsRequired().HasMaxLength(128);
-
-            //b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
+            b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
+        });
+        // Add Author
+        builder.Entity<Author>(b =>
+        {
+            b.ToTable(BookStoreConsts.DbTablePrefix + "Authors", BookStoreConsts.DbSchema);
+            b.ConfigureByConvention();
+            b.Property(x => x.Name).IsRequired().HasMaxLength(AuthorConsts.MaxNameLength);
+            b.HasIndex(x => x.Name);
         });
 
         // Add TodoItem
