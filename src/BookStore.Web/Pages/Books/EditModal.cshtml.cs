@@ -1,7 +1,4 @@
 using BookStore.Books;
-using AutoMapper.Internal.Mappers;
-using BookStore.Books;
-using BookStore.Web.Pages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;

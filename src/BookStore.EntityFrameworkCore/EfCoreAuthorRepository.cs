@@ -1,4 +1,5 @@
-﻿using BookStore.EntityFrameworkCore;
+﻿using BookStore.Authors;
+using BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace BookStore.Authors;
+namespace BookStore;
 
 public class EfCoreAuthorRepository : EfCoreRepository<BookStoreDbContext, Author, Guid>, IAuthorRepository
 {
