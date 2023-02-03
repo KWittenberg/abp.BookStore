@@ -36,7 +36,7 @@
                                         );
                                     },
                                     action: function (data) {
-                                        acme.bookStore.authors.author
+                                        bookStore.authors.author
                                             .delete(data.record.id)
                                             .then(function () {
                                                 abp.notify.info(
