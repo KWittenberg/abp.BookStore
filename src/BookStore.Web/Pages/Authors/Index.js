@@ -10,7 +10,7 @@
             order: [[1, "asc"]],
             searching: false,
             scrollX: true,
-            ajax: abp.libs.datatables.createAjax(acme.bookStore.authors.author.getList),
+            ajax: abp.libs.datatables.createAjax(bookStore.authors.author.getList),
             columnDefs: [
                 {
                     title: l('Actions'),
@@ -36,8 +36,7 @@
                                         );
                                     },
                                     action: function (data) {
-                                        bookStore.authors.author
-                                            .delete(data.record.id)
+                                        bookStore.authors.author.delete(data.record.id)
                                             .then(function () {
                                                 abp.notify.info(
                                                     l('SuccessfullyDeleted')
